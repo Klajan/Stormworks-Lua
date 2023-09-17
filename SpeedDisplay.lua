@@ -97,5 +97,5 @@ end
 function splitNumber(number)
 	number = math.floor(number + 0.5)
 	local a, b, c = math.floor(number / 100), math.floor(number / 10) % 10 or nil, number % 10
-	return (a ~= 0) and a or nil, (b ~= 0) and b or nil, c
+	return (a ~= 0) and a or nil, (b ~= 0 or a ~= 0) and b or nil, c
 end
