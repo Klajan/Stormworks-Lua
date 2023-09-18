@@ -48,8 +48,8 @@ require("Libraries.SegmentDisplays")
 
 -- 0:km/h ; 1:knots ; 2:mi/h ; 3:m/s
 local unitprop = property.getNumber("Speed Unit")
-local SU = ScreenUtilities
-local _7S = SegmentDisplays._7Segment
+SU = ScreenUtilities
+--D7S = Display7Segment
 
 function onTick()
 	speed = input.getNumber(1)
@@ -83,15 +83,15 @@ function onDraw()
 	screen.drawRectF(8, 25, 16, 1)
 	SU.setColorFromTable(textfield_rgb)
 	screen.drawRectF(9, 20, 14, 5)
-	_7S.draw7Segment(5, 4, 255, 4)
-	_7S.draw7Segment(13, 4, 255, 4)
-	_7S.draw7Segment(21, 4, 255, 4)
+	SegmentDisplay7S.draw7Segment(5, 4, 255, 4)
+	SegmentDisplay7S.draw7Segment(13, 4, 255, 4)
+	SegmentDisplay7S.draw7Segment(21, 4, 255, 4)
 	SU.setColorFromTable(text_rgb)
 	screen.drawText(9, 20, unit)
 	local a, b, c = splitNumber(speed)
-	_7S.draw7Segment(5, 4, _7S.numberTo7Segment(a), 4)
-	_7S.draw7Segment(13, 4, _7S.numberTo7Segment(b), 4)
-	_7S.draw7Segment(21, 4, _7S.numberTo7Segment(c), 4)
+	SegmentDisplay7S.draw7Segment(5, 4, SegmentDisplay7S.numberTo7Segment(a), 4)
+	SegmentDisplay7S.draw7Segment(13, 4, SegmentDisplay7S.numberTo7Segment(b), 4)
+	SegmentDisplay7S.draw7Segment(21, 4, SegmentDisplay7S.numberTo7Segment(c), 4)
 end
 
 function splitNumber(number)
