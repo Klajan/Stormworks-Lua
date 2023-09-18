@@ -13,7 +13,7 @@
 do
 	---@type Simulator -- Set properties and screen sizes here - will run once when the script is loaded
 	simulator = simulator
-	simulator:setScreen(1, "1x1")
+	simulator:setScreen(1, "2x2")
 	simulator:setProperty("Total Fuel", 100)
 	simulator:setProperty("Temperature Unit", false)
 	simulator:setProperty("RPS Unit", false)
@@ -68,7 +68,7 @@ function onTick()
 	if not init and input.getNumber(1) ~= 0 then
 		screenWidth = input.getNumber(1)
 		screenHeight = input.getNumber(2)
-		ZoomSlider = TouchscreenSlider:new(screenWidth - 4, 3, 4, screenHeight - 6, 1)
+		ZoomSlider = TouchscreenSlider:new(screenWidth - 5, 3, 5, screenHeight - 6, 1)
 		init = true
 	end
 	local isTouch = input.getBool(1)
@@ -115,13 +115,9 @@ function onDraw()
 	screen.setColor(0, 0, 0, 128)
 	DrawingTools.drawPointer(CPX, CPY, 11, compass)
 
-	--screen.drawTriangleF(CenterX+x0,CenterY+y0,CenterX+x1,CenterY+y1,CenterX+x2+x0,CenterY+y2+y0)
-	--screen.drawTriangleF(CenterX+x0,CenterY+y0,CenterX+x1,CenterY+y1,CenterX+x3+x0,CenterY+y3+y0)
-
 	--drawPointer(CPX,CPY,10,rads_from_north)
 	--screen.drawLine(CenterX,CenterX,CenterX+x1,CenterY+y1)
 	screen.setColor(255, 255, 255)
-	screen.drawRectF(CenterX, CenterY, 1, 1)
 	-- Draw zoom line
 
 	screen.setColor(0, 0, 0, 128)
@@ -130,10 +126,10 @@ function onDraw()
 	screen.setColor(0, 0, 0, 255)
 	local sliderHeight = (screenHeight - 6) * zoomPercent
 
-	screen.drawRectF(screenWidth - 4, 3 + sliderHeight, 4, 1)
+	screen.drawRectF(screenWidth - 5, 3 + sliderHeight, 5, 1)
 
-	screen.drawText(1, 1, tostring(math.floor(zoomLevel * 100) / 100))
-	screen.drawText(1, 7, tostring(math.floor(compass_input * 100) / 100))
+	--screen.drawText(1, 1, tostring(math.floor(zoomLevel * 100) / 100))
+	--screen.drawText(1, 7, tostring(math.floor(compass_input * 100) / 100))
 end
 
 function lerp(startValue, endValue, t)

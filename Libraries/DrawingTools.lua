@@ -7,9 +7,9 @@
 
 ---@section DarkModeColorScheme
 local background_rgb = { 0.270645, 0.679522, 2.487113 } --Gamma Corrected #1e283c
-local textfield_rgb = { 0.679522, 1.387764, 4.073102 } --Gamma Corrected #283246
-local border_rgb = { 1.882661, 3.213175, 9.103065 }    --Gamma Corrected #37415a
-local text_rgb = { 1.478551, 255, 0 }                  --Gamma Corrected #33ff00
+local textfield_rgb = { 0.679522, 1.387764, 4.073102 }  --Gamma Corrected #283246
+local border_rgb = { 1.882661, 3.213175, 9.103065 }     --Gamma Corrected #37415a
+local text_rgb = { 1.478551, 255, 0 }                   --Gamma Corrected #33ff00
 DarkModeColorScheme = { background_rgb, textfield_rgb, border_rgb, text_rgb }
 ---@endsection
 
@@ -21,8 +21,8 @@ DrawingTools = {
 		width = (width or 30) * math.pi / 360
 		x = x + size / 2 * math.sin(rotation)
 		y = y - size / 2 * math.cos(rotation)
-		screen.drawTriangleF(x, y, x - size * math.sin(rotation + width), y + size * math.cos(rotation + width), x - size * math.sin(rotation - width),
-			y + size * math.cos(rotation - width))
+		screen.drawTriangleF(x, y, x - size * math.sin(rotation + width), y + size * math.cos(rotation + width),
+			x - size * math.sin(rotation - width), y + size * math.cos(rotation - width))
 	end,
 	---Draws any Image (4n x 1n) from a hex string. Each byte represents if the pixel should be drawn (1) or not (0)
 	---@param x number
